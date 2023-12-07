@@ -1,0 +1,21 @@
+<div class="assignments-container">
+    <div *ngFor="let assignment of assignments" class="assignment-card">
+      <div class="assignment-content">
+        <div class="assignment-text">
+          <h3 class="assignment-title">{{ assignment.nom }}</h3>
+          <div class="assignment-info">
+            <p><strong>Date:</strong> {{ assignment.daterendu | date:'longDate' }}</p>
+            <p><strong>Prof:</strong> {{ assignment.prof }}</p>
+            <p><strong>Matière:</strong> {{ assignment.matiere }}</p>
+          </div>
+        </div>
+        <div class="assignment-status" [ngClass]="{'done': assignment.rendu, 'not-done': !assignment.rendu}">
+          <p *ngIf="!assignment.rendu; else showGrade">Non Rendu</p>
+          <ng-template #showGrade>
+            <p>Note: {{ assignment.note }}</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  

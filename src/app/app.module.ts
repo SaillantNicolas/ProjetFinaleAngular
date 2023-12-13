@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AssignmentsListComponent } from './assignments-list/assignments-list.component';
+import { AssignmentDetailsComponent } from './assignment-details/assignment-details.component';
 
 const routes: Route[] = [
   {
@@ -16,7 +17,15 @@ const routes: Route[] = [
   },
   {
     path: 'home',
-    component: AppComponent,
+    component: AssignmentsListComponent,
+  },
+  {
+    path: 'assignments',
+    component: AssignmentsListComponent,
+  },
+  {
+    path: 'assignment/:id',
+    component: AssignmentDetailsComponent,
   },
 ];
 
@@ -25,6 +34,7 @@ const routes: Route[] = [
     AppComponent,
     NavbarComponent,
     AssignmentsListComponent,
+    AssignmentDetailsComponent,
   ],
   imports: [
     BrowserModule,

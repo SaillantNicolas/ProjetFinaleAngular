@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Assignment } from '../models/assignment.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignments-list',
@@ -9,7 +10,7 @@ import { Assignment } from '../models/assignment.model';
 })
 export class AssignmentsListComponent {
   assignments : Assignment[] = [];
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.apiService.getAssignments().subscribe(data => {
@@ -18,5 +19,8 @@ export class AssignmentsListComponent {
     }, error => {
       console.error('Erreur lors de la récupération des assignments', error);
     });
+  }
+  goToAssignmentDetail(id: number) {
+    this.router.navigate(['/assignment', id]);  
   }
 }

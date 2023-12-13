@@ -1,5 +1,5 @@
 <div class="assignments-container">
-    <div *ngFor="let assignment of assignments" class="assignment-card">
+    <div *ngFor="let assignment of assignments" (click)="goToAssignmentDetail(assignment.id)" class="assignment-card">
       <div class="assignment-content">
         <div class="assignment-text">
           <h3 class="assignment-title">{{ assignment.nom }}</h3>

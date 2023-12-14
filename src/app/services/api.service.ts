@@ -18,4 +18,10 @@ export class ApiService {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Assignment>(url);
   }
+
+  deleteAssignment(id: string): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    console.log(url);
+    return this.http.delete(url);
+  }
 }

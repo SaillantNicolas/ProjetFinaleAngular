@@ -4,7 +4,7 @@
     <p>Note: {{ assignment.note }}</p>
     <p>Professeur: {{ assignment.prof }}</p>
     <button>Edit</button>
-    <button>Delete</button>
-    <button>Retour</button>
+    <button (click)="AssignmentDelete(assignment._id)">Delete</button>
+    <button (click)="Back()">Retour</button>
   </div>
   

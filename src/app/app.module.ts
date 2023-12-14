@@ -13,7 +13,7 @@ import { AssignmentDetailsComponent } from './assignment-details/assignment-deta
 const routes: Route[] = [
   {
     path: '',
-    component: AppComponent,
+    component: AssignmentsListComponent,
   },
   {
     path: 'home',

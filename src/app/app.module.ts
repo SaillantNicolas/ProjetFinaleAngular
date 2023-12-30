@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AssignmentsListComponent } from './assignments-list/assignments-list.component';
 import { AssignmentDetailsComponent } from './assignment-details/assignment-details.component';
+import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
 
 const routes: Route[] = [
   {
@@ -35,6 +36,7 @@ const routes: Route[] = [
     NavbarComponent,
     AssignmentsListComponent,
     AssignmentDetailsComponent,
+    AddAssignmentComponent,
   ],
   imports: [
     BrowserModule,

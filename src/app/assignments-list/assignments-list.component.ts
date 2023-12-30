@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { Assignment } from '../models/assignment.model';
 import { Router } from '@angular/router';
+import { Assignment } from '../models/assignment.model';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-assignments-list',
@@ -21,6 +21,6 @@ export class AssignmentsListComponent {
     });
   }
   goToAssignmentDetail(id: number) {
-    this.router.navigate(['/assignment', id]);  
+    this.router.navigate(['/assignment', id]);
   }
 }

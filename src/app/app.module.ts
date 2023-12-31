@@ -1,15 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { Route, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NgModule } from '@angular/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AssignmentsListComponent } from './assignments-list/assignments-list.component';
-import { AssignmentDetailsComponent } from './assignment-details/assignment-details.component';
+import { Route, RouterModule } from '@angular/router';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
+import { AppComponent } from './app.component';
+import { AssignmentDetailsComponent } from './assignment-details/assignment-details.component';
+import { AssignmentsListComponent } from './assignments-list/assignments-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 const routes: Route[] = [
   {
@@ -37,6 +42,7 @@ const routes: Route[] = [
     AssignmentsListComponent,
     AssignmentDetailsComponent,
     AddAssignmentComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +51,9 @@ const routes: Route[] = [
     MatIconModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    MatDatepickerModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

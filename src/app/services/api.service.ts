@@ -1,12 +1,17 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Assignment } from '../models/assignment.model';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Assignment } from './../models/assignment.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  addAssignment(Assignment: Assignment): Observable<any> {
+    this.assignments.push(Assignment);
+    return of ('assignement ajouté');
+  }
   baseUrl = 'http://localhost:8010/api/assignments';
   constructor(private http: HttpClient) { }
 

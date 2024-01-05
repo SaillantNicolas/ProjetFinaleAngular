@@ -1,10 +1,38 @@
-a {
-    color: #fff;
-    text-decoration: underline;
+h1 {
+    font-family: 'Cursive', sans-serif;
+    color: rgb(71, 29, 134);
+    text-align: center;
+}
+
+.mat-sidenav-container {
+    height: calc(205vh - 115vh);
+}
+
+.mat-sidenav {
+    width: 200px;
+    background-color: rgb(235, 217, 245);
+}
+
+.ajouterBtn {
+    align-self: flex-end;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.mat-toolbar {
     font-size: 18px;
-    margin: 0 10px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-    
+    background-color: rgb(71, 29, 134);
+    color: white;
+}
+
+.mat-icon {
+    font-size: 24px;
+    color: white;
+}
+
+.mat-icon-button {
+    background-color: rgb(71, 29, 134);
+    color: white;
 }

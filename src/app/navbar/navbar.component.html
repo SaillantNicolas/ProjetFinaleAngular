@@ -1,6 +1,26 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <a routerLink="/home"><mat-icon>home</mat-icon>Home</a>
+<H1>Formulaire d'ajout de devoirs</H1>
+<mat-toolbar>
+    <mat-toolbar-row>
+        <button mat-button (click)="isSidebarOpened" > <mat-icon> menu </mat-icon> </button>
+        <button mat-button routerLink="/home" ><mat-icon> home </mat-icon> Home </button>
+        <span class="spacer"></span>
+        <button mat-button routerLink="/login" >
+            <mat-icon>account_circle</mat-icon>Login
+        </button>
+    </mat-toolbar-row>
 </mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav [(opened)]="isSidebarOpened" mode="side">
+        <mat-list>
+            <mat-list-item><a routerLink="/home"> Liste de devoirs</a></mat-list-item>
+            <mat-list-item><a routerLink="/add"> Ajout d'un devoir</a></mat-list-item>
+            <mat-list-item><a routerLink="/home"> Modification d'un devoir</a></mat-list-item>
+            <mat-list-item><a routerLink="/home"> Suppression d'un devoir</a></mat-list-item>
+            <mat-list-item><a routerLink="/home"> Génération de données de test</a></mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

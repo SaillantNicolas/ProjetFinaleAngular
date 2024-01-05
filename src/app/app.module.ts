@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { AssignmentDetailsComponent } from './assignment-details/assignment-details.component';
 import { AssignmentsListComponent } from './assignments-list/assignments-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 const routes: Route[] = [
   {
@@ -42,7 +42,6 @@ const routes: Route[] = [
     AssignmentsListComponent,
     AssignmentDetailsComponent,
     AddAssignmentComponent,
-    SidebarComponent,
   ],
   imports: [
     BrowserModule,

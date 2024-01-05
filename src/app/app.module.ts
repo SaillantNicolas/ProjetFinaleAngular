@@ -33,6 +33,14 @@ const routes: Route[] = [
     path: 'assignment/:id',
     component: AssignmentDetailsComponent,
   },
+  {
+    path: 'add',
+    component: AddAssignmentComponent,
+  },
+  {
+    path: 'edit/:id',
+    component: AddAssignmentComponent,
+  },
 ];
 
 @NgModule({

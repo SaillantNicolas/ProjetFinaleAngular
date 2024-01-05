@@ -24,12 +24,12 @@ h1 {
 .mat-toolbar {
     font-size: 18px;
     background-color: rgb(71, 29, 134);
-    color: white;
+    color: black;
 }
 
 .mat-icon {
     font-size: 24px;
-    color: white;
+    color: black;
 }
 
 .mat-icon-button {

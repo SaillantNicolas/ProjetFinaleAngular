@@ -1,15 +1,21 @@
-<form ngForm (submit)="onSubmit()" #assignementForm class="form">
-    <input matInput [matDatepicker]="picker" [(ngModel)]="dateDeRendu" name="date" placeholder="Date de rendu" (ngModelChange)="dateDeRendu = $event">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    import { MatButtonModule } from '@angular/material/button';
-        <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input matInput [matDatepicker]="picker" [(ngModel)]="dateDeRendu" name="date" placeholder="Date de rendu">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <button mat-stroked-button color="primary" [disabled]="!ajoutActive">
-        Ajouter un devoir
-    </button>
-</form>
+<div class="add-assignment-container">
+    <h2>Add New Assignment</h2>
+    <form (ngSubmit)="addAssignment()">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" [(ngModel)]="newAssignment.nom" name="nom" required>
+
+        <label for="matiere">Matière:</label>
+        <input type="text" id="matiere" [(ngModel)]="newAssignment.matiere" name="matiere" required>
+
+        <label for="prof">Professeur:</label>
+        <input type="text" id="prof" [(ngModel)]="newAssignment.prof" name="prof" required>
+
+        <label for="daterendu">Date de Rendu:</label>
+        <input type="date" id="daterendu" [(ngModel)]="newAssignment.daterendu" name="daterendu" required>
+
+        <label for="note">Note:</label>
+        <input type="number" id="note" [(ngModel)]="newAssignment.note" name="note" required>
+
+        <button type="submit">Add Assignment</button>
+    </form>
+</div>

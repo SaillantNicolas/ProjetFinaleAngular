@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -14,7 +15,6 @@ import { AssignmentDetailsComponent } from './assignment-details/assignment-deta
 import { AssignmentsListComponent } from './assignments-list/assignments-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
 
 const routes: Route[] = [
   {
@@ -54,6 +54,8 @@ const routes: Route[] = [
     MatDatepickerModule,
     MatSidenavModule,
     MatListModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

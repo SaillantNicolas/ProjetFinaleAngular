@@ -1,22 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Assignment } from './../models/assignment.model';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  addAssignment(Assignment: Assignment): Observable<any> {
-    this.assignments.push(Assignment);
-    return of ('assignement ajouté');
-  }
   baseUrl = 'http://localhost:8010/api/assignments';
-  constructor(private http: HttpClient) { }
 
-  getAssignments(): Observable<Assignment[]>  {
-    return this.http.get<Assignment[]>('http://localhost:8010/api/assignments');
+  constructor(private http: HttpClient) {}
+
+  addAssignment(newAssignment: Assignment): Observable<any> {
+    // Assuming you have an API endpoint for adding assignments
+    return this.http.post<any>(this.baseUrl, newAssignment);
+  }
+
+  getAssignments(): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>(this.baseUrl);
   }
 
   getAssignmentById(id: string): Observable<Assignment> {
@@ -26,7 +27,6 @@ export class ApiService {
 
   deleteAssignment(id: string): Observable<any> {
     const url = `${this.baseUrl}/${id}`;
-    console.log(url);
     return this.http.delete(url);
   }
 }

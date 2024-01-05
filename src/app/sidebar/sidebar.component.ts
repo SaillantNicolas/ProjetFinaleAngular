@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  // Sidebar component content
+  isSidebarOpened: boolean = false;
 }

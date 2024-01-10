@@ -14,6 +14,11 @@ import { AppComponent } from './app.component';
 import { AssignmentDetailsComponent } from './assignment-details/assignment-details.component';
 import { AssignmentsListComponent } from './assignments-list/assignments-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
 
 
 const routes: Route[] = [
@@ -41,6 +46,10 @@ const routes: Route[] = [
     path: 'edit/:id',
     component: AddAssignmentComponent,
   },
+  {
+    path: 'login',
+    component: LoginFormComponent,
+  },
 ];
 
 @NgModule({
@@ -50,6 +59,7 @@ const routes: Route[] = [
     AssignmentsListComponent,
     AssignmentDetailsComponent,
     AddAssignmentComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +72,11 @@ const routes: Route[] = [
     MatSidenavModule,
     MatListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

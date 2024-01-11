@@ -1,21 +1,26 @@
-<div class="add-assignment-container">
-    <h2>Ajout d'un nouveau devoir</h2>
-    <form (ngSubmit)="addAssignment()">
-        <label for="nom">Nom:</label>
-        <input type="text" id="nom" [(ngModel)]="nom" name="nom" required>
-
-        <label for="matiere">Matière:</label>
-        <input type="text" id="matiere" [(ngModel)]="matiere" name="matiere" required>
-
-        <label for="prof">Professeur:</label>
-        <input type="text" id="prof" [(ngModel)]="prof" name="prof" required>
-
-        <label for="daterendu">Date de Rendu:</label>
-        <input type="date" id="daterendu" [(ngModel)]="daterendu" name="daterendu" required>
-
-<!--       <label for="note">Note:</label>
-        <input type="number" id="note" [(ngModel)]="newAssignment.note" name="note" required> -->
-
-        <button type="submit">Ajout devoir</button>
-    </form>
-</div>
+<mat-card class="add-assignment-container">
+    <mat-card-header>
+      <mat-card-title>Ajout d'un nouveau devoi</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="addAssignment()">
+        <mat-form-field appearance="fill">
+            <mat-label>Nom</mat-label>
+            <input matInput type="text" id="nom" [(ngModel)]="nom" name="nom" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Matière</mat-label>
+            <input matInput type="text" id="matiere" [(ngModel)]="matiere" name="matiere" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Professeur</mat-label>
+            <input matInput type="text" id="prof" [(ngModel)]="prof" name="prof" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Date de Rendu</mat-label>
+            <input matInput type="date" id="daterendu" [(ngModel)]="daterendu" name="daterendu" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Ajout devoir</button>
+      </form>
+    </mat-card-content>
+</mat-card>

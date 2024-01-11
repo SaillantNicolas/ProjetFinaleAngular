@@ -10,6 +10,11 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./add-assignment.component.css']
 })
 export class AddAssignmentComponent {
+  lastId: number = 0;
+  nom = '';
+  matiere = '';
+  prof = '';
+  daterendu = new Date();
   newAssignment: Assignment = {
     _id: '',
     rendu: false,
@@ -21,9 +26,22 @@ export class AddAssignmentComponent {
     prof: ''
   };
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router) {
+    this.apiService.getAssignments().subscribe(data => {
+      data.forEach(element => {
+        if (element.id > this.lastId) {
+          this.lastId = element.id;
+        }
+      });
+    });
+  }
 
   addAssignment() {
+    this.newAssignment.id = this.lastId + 1;
+    this.newAssignment.nom = this.nom;
+    this.newAssignment.matiere = this.matiere;
+    this.newAssignment.prof = this.prof;
+    console.log('Nouvel assignment', this.newAssignment)
     this.apiService.addAssignment(this.newAssignment).subscribe(
       data => {
         console.log('Assignment ajouté', data);

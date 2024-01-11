@@ -1,21 +1,21 @@
 <div class="add-assignment-container">
-    <h2>Add New Assignment</h2>
+    <h2>Ajout d'un nouveau devoir</h2>
     <form (ngSubmit)="addAssignment()">
         <label for="nom">Nom:</label>
-        <input type="text" id="nom" [(ngModel)]="newAssignment.nom" name="nom" required>
+        <input type="text" id="nom" [(ngModel)]="nom" name="nom" required>
 
         <label for="matiere">Matière:</label>
-        <input type="text" id="matiere" [(ngModel)]="newAssignment.matiere" name="matiere" required>
+        <input type="text" id="matiere" [(ngModel)]="matiere" name="matiere" required>
 
         <label for="prof">Professeur:</label>
-        <input type="text" id="prof" [(ngModel)]="newAssignment.prof" name="prof" required>
+        <input type="text" id="prof" [(ngModel)]="prof" name="prof" required>
 
         <label for="daterendu">Date de Rendu:</label>
-        <input type="date" id="daterendu" [(ngModel)]="newAssignment.daterendu" name="daterendu" required>
+        <input type="date" id="daterendu" [(ngModel)]="daterendu" name="daterendu" required>
 
 <!--       <label for="note">Note:</label>
         <input type="number" id="note" [(ngModel)]="newAssignment.note" name="note" required> -->
 
-        <button type="submit">Add Assignment</button>
+        <button type="submit">Ajout devoir</button>
     </form>
 </div>

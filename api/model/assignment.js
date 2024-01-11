@@ -2,10 +2,13 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let AssignmentSchema = Schema({
+    rendu: Boolean,
     id: Number,
-    dateDeRendu: Date,
+    daterendu: Date,
+    matiere: String,
     nom: String,
-    rendu: Boolean
+    note: Number,
+    prof: String,
 });
 
 // C'est à travers ce modèle Mongoose qu'on pourra faire le CRUD

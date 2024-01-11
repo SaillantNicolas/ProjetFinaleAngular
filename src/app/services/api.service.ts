@@ -25,6 +25,11 @@ export class ApiService {
     return this.http.get<Assignment>(url);
   }
 
+  updateAssignment(id: string, assignment: Assignment): Observable<any> {
+    const url = `${this.baseUrl}`;
+    return this.http.put<Assignment>(url, assignment);
+  }
+  
   deleteAssignment(id: string): Observable<any> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete(url);

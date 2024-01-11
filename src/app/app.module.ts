@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
+import { EditAssignmentComponent } from './edit-assignment/edit-assignment.component';
 
 
 const routes: Route[] = [
@@ -44,7 +45,7 @@ const routes: Route[] = [
   },
   {
     path: 'edit/:id',
-    component: AddAssignmentComponent,
+    component: EditAssignmentComponent,
   },
   {
     path: 'login',
@@ -60,6 +61,7 @@ const routes: Route[] = [
     AssignmentDetailsComponent,
     AddAssignmentComponent,
     LoginFormComponent,
+    EditAssignmentComponent,
   ],
   imports: [
     BrowserModule,

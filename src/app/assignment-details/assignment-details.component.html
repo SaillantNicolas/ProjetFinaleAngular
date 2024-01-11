@@ -4,7 +4,7 @@
   <p>Matière: {{ assignment.matiere }}</p>
   <p>Note: {{ assignment.note }}</p>
   <p>Professeur: {{ assignment.prof }}</p>
-  <button mat-raised-button class="mat-raised-button edit-btn">Edit</button>
+  <button mat-raised-button class="mat-raised-button edit-btn" (click)="Edit()">Edit</button>
   <button mat-raised-button class="mat-raised-button delete-btn" (click)="AssignmentDelete(assignment._id)">Delete</button>
   <button mat-raised-button class="mat-raised-button back-btn" (click)="Back()">Retour</button>
 </div>

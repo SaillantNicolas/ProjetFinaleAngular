@@ -27,7 +27,7 @@ export class AssignmentDetailsComponent implements OnInit {
 
   Edit() {
     if (this.assignment) {
-      this.router.navigate(['/edit-assignment', this.assignment._id]);
+      this.router.navigate(['/edit', this.assignment.id]);
     }
   }
 

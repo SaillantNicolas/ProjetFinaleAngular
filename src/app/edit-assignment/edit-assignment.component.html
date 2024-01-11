@@ -1,0 +1,30 @@
+<mat-card class="edit-assignment-container">
+    <mat-card-header>
+      <mat-card-title>Modifié un devoir</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="updateAssignment()">
+        <mat-form-field appearance="fill">
+            <mat-label>Nom</mat-label>
+            <input matInput type="text" id="nom" [(ngModel)]="newAssignment.nom" name="nom" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Matière</mat-label>
+            <input matInput type="text" id="matiere" [(ngModel)]="newAssignment.matiere" name="matiere" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Professeur</mat-label>
+            <input matInput type="text" id="prof" [(ngModel)]="newAssignment.prof" name="prof" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Date de Rendu</mat-label>
+            <input matInput type="date" id="daterendu" [(ngModel)]="newAssignment.daterendu" name="daterendu" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Note</mat-label>
+            <input matInput type="number" id="note" [(ngModel)]="newAssignment.note" name="note" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Modifié devoir</button>
+      </form>
+    </mat-card-content>
+</mat-card>

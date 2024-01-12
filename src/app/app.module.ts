@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { EditAssignmentComponent } from './edit-assignment/edit-assignment.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 const routes: Route[] = [
@@ -78,7 +79,8 @@ const routes: Route[] = [
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,6 +21,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { EditAssignmentComponent } from './edit-assignment/edit-assignment.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ProfListComponent } from './prof-list/prof-list.component';
 
 
 const routes: Route[] = [
@@ -52,6 +53,10 @@ const routes: Route[] = [
     path: 'login',
     component: LoginFormComponent,
   },
+  {
+    path: 'profs',
+    component: ProfListComponent,
+  }
 ];
 
 @NgModule({
@@ -63,6 +68,7 @@ const routes: Route[] = [
     AddAssignmentComponent,
     LoginFormComponent,
     EditAssignmentComponent,
+    ProfListComponent,
   ],
   imports: [
     BrowserModule,

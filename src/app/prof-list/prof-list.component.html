@@ -1,0 +1,27 @@
+<div class="profs-container">
+    <div
+      *ngFor="let prof of paginatedProfs"
+      class="prof-card"
+    >
+      <div class="prof-content">
+        <div class="prof-text">
+          <h3 class="prof-title"> {{ prof.name }} {{ prof.firstname}} </h3>
+          <div class="prof-info">
+            <p><strong>Nom :</strong> {{ prof.name }}</p>
+            <p><strong>prénom :</strong> {{prof.firstname }}</p>
+            <p><strong>Email :</strong> {{ prof.email }}</p>
+          </div>
+        </div>
+        <div class="prof-image">
+            <img [src]="prof.image" alt="Image du professeur">
+        </div>
+      </div>
+    </div>
+    <mat-paginator 
+    [length]="totalProfs"
+    [pageSize]=5
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="pageEvent($event)">
+  </mat-paginator>
+  </div>
+  

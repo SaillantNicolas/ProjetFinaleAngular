@@ -12,6 +12,7 @@ import { ApiService } from '../services/api.service';
 })
 export class AssignmentDetailsComponent implements OnInit {
   profsInfo: {[key: number]: Profs} = {};
+  profsImage: {[key: number]: string} = {};
   assignment: Assignment | undefined;
 
   constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService, private profService: ProfService) { }
@@ -32,6 +33,7 @@ export class AssignmentDetailsComponent implements OnInit {
   loadProfForAssignment(id: number) {
     this.profService.getProfsById(id.toString()).subscribe(data => {
       this.profsInfo[id] = data;
+      this.profsImage[id] = data.image;
     }
     , error => {
       console.error('Erreur lors de la récupération du professeur', error);
@@ -39,6 +41,10 @@ export class AssignmentDetailsComponent implements OnInit {
   }
   getProfName(profId: number): string {
     return (this.profsInfo[profId]?.name + " " + this.profsInfo[profId]?.firstname) || 'Non assigné';
+  }
+
+  getProfImage(profId: number): string {
+    return this.profsImage[profId] || '';
   }
   Edit() {
     if (this.assignment) {

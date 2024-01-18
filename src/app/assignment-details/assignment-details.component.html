@@ -1,10 +1,17 @@
 
 <div *ngIf="assignment" class="assignment-detail-container">
-  <h2>{{ assignment.nom }}</h2>
-  <p>Matière: {{ assignment.matiere }}</p>
-  <p>Note: {{ assignment.note }}</p>
-  <p>Professeur: {{ getProfName(assignment.prof) }}</p>
-  <button mat-raised-button class="mat-raised-button edit-btn" (click)="Edit()">Edit</button>
-  <button mat-raised-button class="mat-raised-button delete-btn" (click)="AssignmentDelete(assignment._id)">Delete</button>
-  <button mat-raised-button class="mat-raised-button back-btn" (click)="Back()">Retour</button>
+  <div class="content">
+    <h2>{{ assignment.nom }}</h2>
+    <p>Matière : {{ assignment.matiere }}</p>
+    <p>Note : {{ assignment.note }}</p>
+    <p>Professeur : <strong>{{ getProfName(assignment.prof) }}</strong></p>
+  </div>
+  <div class="buttons">
+    <button mat-raised-button class="mat-raised-button edit-btn" (click)="Edit()">Edit</button>
+    <button mat-raised-button class="mat-raised-button delete-btn" (click)="AssignmentDelete(assignment._id)">Delete</button>
+    <button mat-raised-button class="mat-raised-button back-btn" (click)="Back()">Retour</button>
+  </div>
+  <div class="image-container">
+    <img [src]="getProfImage(assignment.prof)" alt="Image du professeur">
+  </div>
 </div>

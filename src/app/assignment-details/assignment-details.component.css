@@ -5,17 +5,43 @@
     justify-content: center;
     align-items: center;
     height: 70vh;
-    /* Ajustez la hauteur en fonction de vos besoins */
 }
 
 .assignment-detail-container {
+    display: flex;
+    justify-content: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
     border: 2px solid #ccc;
-    /* Ajoutez une bordure si nécessaire */
     border-radius: 10px;
-    /* Ajoutez un arrondi aux coins */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Ajoutez une ombre si nécessaire */
+    margin: auto;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.content {
+    max-width: 70%;
+}
+
+.image-container {
+    max-width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: auto;
 }
 
 button {
@@ -25,17 +51,17 @@ button {
     padding: 15px;
 }
 
-button.mat-raised-button.edit-btn {
+button.edit-btn {
     background-color: #b179e9;
     color: black;
 }
 
-button.mat-raised-button.delete-btn {
+button.delete-btn {
     background-color: #e38d87;
     color: black;
 }
 
-button.mat-raised-button.back-btn {
+button.back-btn {
     background-color: #85c1f2;
     color: black;
 }

@@ -12,7 +12,7 @@
             <strong>Date:</strong>
             {{ assignment.daterendu | date : "longDate" }}
           </p>
-          <p><strong>Prof:</strong> {{ assignment.prof }}</p>
+          <p><strong>Prof:</strong> {{ getProfName(assignment.prof) }}</p>
           <p><strong>Matière:</strong> {{ assignment.matiere }}</p>
         </div>
       </div>

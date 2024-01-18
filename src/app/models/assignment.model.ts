@@ -6,6 +6,6 @@ export interface Assignment {
     matiere: string;
     nom: string;
     note: number;
-    prof: string;
+    prof: number;
   }
   

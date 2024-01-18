@@ -14,7 +14,9 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Professeur</mat-label>
-            <input matInput type="text" id="prof" [(ngModel)]="newAssignment.prof" name="prof" required>
+            <select id="prof" [(ngModel)]="newAssignment.prof" name="prof" matNativeControl required>
+              <option *ngFor="let prof of profs" [value]="prof.id">{{prof.name}}</option>
+            </select>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Date de Rendu</mat-label>

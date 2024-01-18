@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Profs } from '../models/profs.model';
 import { Assignment } from '../models/assignment.model';
+import { ProfService } from '../services/prof.service';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -9,15 +11,17 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./assignment-details.component.css']
 })
 export class AssignmentDetailsComponent implements OnInit {
+  profsInfo: {[key: number]: Profs} = {};
   assignment: Assignment | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService, private profService: ProfService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.apiService.getAssignmentById(id).subscribe(data => {
         this.assignment = data;
+        this.loadProfForAssignment(data.prof);
         console.log('Assignment récupéré', data);
       }, error => {
         console.error('Erreur lors de la récupération de l\'assignment', error);
@@ -25,6 +29,17 @@ export class AssignmentDetailsComponent implements OnInit {
     }
   }
 
+  loadProfForAssignment(id: number) {
+    this.profService.getProfsById(id.toString()).subscribe(data => {
+      this.profsInfo[id] = data;
+    }
+    , error => {
+      console.error('Erreur lors de la récupération du professeur', error);
+    });
+  }
+  getProfName(profId: number): string {
+    return (this.profsInfo[profId]?.name + " " + this.profsInfo[profId]?.firstname) || 'Non assigné';
+  }
   Edit() {
     if (this.assignment) {
       this.router.navigate(['/edit', this.assignment.id]);

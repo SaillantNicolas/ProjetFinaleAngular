@@ -1,4 +1,4 @@
-export interface profs {
+export interface Profs {
     _id: string;
     id: number;
     name: string;

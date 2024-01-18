@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Assignment } from '../models/assignment.model';
+import { Profs } from '../models/profs.model';
 import { ApiService } from '../services/api.service';
+import { ProfService } from '../services/prof.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -11,21 +13,34 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 })
 export class AssignmentsListComponent implements OnInit {
   assignments : Assignment[] = [];
+  profname = '';
+  profsInfo: {[key: number]: Profs} = {};
   paginatedAssignments: Assignment[] = [];
   totalAssignments = 0;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private profService: ProfService) { }
 
   ngOnInit() {
     this.apiService.getAssignments().subscribe(data => {
       this.assignments = data;
       this.totalAssignments = this.assignments.length;
       this.initializePagination();
+      this.loadProfForAssignments();
       console.log('Assignments récupérés', data);
     }, error => {
       console.error('Erreur lors de la récupération des assignments', error);
+    });
+  }
+
+  loadProfForAssignments() {
+    this.assignments.forEach(assignment => {
+      if (!this.profsInfo[assignment.prof]) {
+        this.profService.getProfsById(assignment.prof.toString()).subscribe(data => {
+          this.profsInfo[assignment.prof] = data;
+        });
+      }
     });
   }
 
@@ -35,6 +50,10 @@ export class AssignmentsListComponent implements OnInit {
 
   goToAssignmentDetail(id: number) {
     this.router.navigate(['/assignment', id]);
+  }
+
+  getProfName(profId: number): string {
+    return (this.profsInfo[profId]?.name + " " + this.profsInfo[profId]?.firstname) || 'Non assigné';
   }
 
   pageEvent(event: PageEvent) {

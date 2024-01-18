@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Assignment } from '../models/assignment.model';
 import { ApiService } from '../services/api.service';
+import { Profs } from '../models/profs.model';
+import { ProfService } from '../services/prof.service';
 
 @Component({
   selector: 'app-add-assignment',
@@ -10,10 +12,11 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./add-assignment.component.css']
 })
 export class AddAssignmentComponent {
+  profs : Profs[] = [];
   lastId: number = 0;
   nom = '';
   matiere = '';
-  prof = '';
+  prof = 0;
   daterendu = new Date();
   newAssignment: Assignment = {
     _id: '',
@@ -23,10 +26,18 @@ export class AddAssignmentComponent {
     matiere: '',
     nom: '',
     note: 0,
-    prof: ''
+    prof: 0
   };
 
-  constructor(private apiService: ApiService, private router: Router) {
+  ngOnInit(): void {
+    this.profService.getProfs().subscribe(data => {
+      this.profs = data;
+      console.log('Professeurs récupérés', data);
+    }, error => {
+      console.error('Erreur lors de la récupération des professeurs', error);
+    });
+  }
+  constructor(private apiService: ApiService, private router: Router, private profService: ProfService) {
     this.apiService.getAssignments().subscribe(data => {
       data.forEach(element => {
         if (element.id > this.lastId) {
@@ -40,8 +51,9 @@ export class AddAssignmentComponent {
     this.newAssignment.id = this.lastId + 1;
     this.newAssignment.nom = this.nom;
     this.newAssignment.matiere = this.matiere;
-    this.newAssignment.prof = this.prof;
+    this.newAssignment.prof = Number(this.prof);
     console.log('Nouvel assignment', this.newAssignment)
+    this.router.navigate(['/home']);
     this.apiService.addAssignment(this.newAssignment).subscribe(
       data => {
         console.log('Assignment ajouté', data);

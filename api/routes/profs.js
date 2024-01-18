@@ -15,18 +15,13 @@ function getProfs(req, res) {
 
 
 // Récupérer un professeur par son id (GET)
-function getProf(req, res) {
+function getProf(req, res){
     let profId = req.params.id;
 
-    Prof.findById(profId, (err, prof) => {
-        if (err) {
-            console.log("Erreur : ", err);
-            res.send(err);
-            return;
-        }
-        console.log("Professeur trouvé : ", prof);
+    Prof.findOne({id: profId}, (err, prof) =>{
+        if(err){res.send(err)}
         res.json(prof);
-    });
+    })
 }
 
 module.exports = { getProfs, getProf };

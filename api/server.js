@@ -3,6 +3,7 @@ let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
 let accounts = require('./routes/accounts');
+let profs = require('./routes/profs');
 
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -62,6 +63,11 @@ app.route(prefix + '/accounts')
 app.route(prefix + '/accounts/:id')
   .get(accounts.getAccount);
 
+app.route(prefix + '/profs')
+  .get(profs.getProfs);
+
+app.route(prefix + '/profs/:id')
+  .get(profs.getProf);
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
 console.log('Serveur démarré sur http://localhost:' + port);

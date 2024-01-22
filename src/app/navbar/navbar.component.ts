@@ -24,4 +24,8 @@ export class NavbarComponent {
   toggleSidebar() {
     this.isSidebarOpened = !this.isSidebarOpened;
   }
+
+  closeSidebar() {
+    this.isSidebarOpened = false;
+  }
 }

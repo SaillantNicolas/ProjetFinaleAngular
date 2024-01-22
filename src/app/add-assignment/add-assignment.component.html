@@ -1,28 +1,32 @@
 <mat-card class="add-assignment-container">
-    <mat-card-header>
-      <mat-card-title>Ajout d'un nouveau devoi</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form (ngSubmit)="addAssignment()">
-        <mat-form-field appearance="fill">
-            <mat-label>Nom</mat-label>
-            <input matInput type="text" id="nom" [(ngModel)]="nom" name="nom" required>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Matière</mat-label>
-            <input matInput type="text" id="matiere" [(ngModel)]="matiere" name="matiere" required>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>professeur </mat-label>
-          <select id="prof" [(ngModel)]="prof" name="prof" matNativeControl required>
-            <option *ngFor="let prof of profs" [value]="prof.id">{{prof.name}}</option>
-          </select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Date de Rendu</mat-label>
-            <input matInput type="date" id="daterendu" [(ngModel)]="daterendu" name="daterendu" required>
-        </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Ajout devoir</button>
-      </form>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>Ajout d'un nouveau devoir</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="addAssignment(assignmentForm)" #assignmentForm="ngForm">
+      <mat-form-field appearance="fill">
+          <mat-label>Nom</mat-label>
+          <input matInput type="text" id="nom" [(ngModel)]="nom" name="nom" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Matière</mat-label>
+          <input matInput type="text" id="matiere" [(ngModel)]="matiere" name="matiere" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>professeur </mat-label>
+        <select id="prof" [(ngModel)]="prof" name="prof" matNativeControl required>
+          <option *ngFor="let prof of profs" [value]="prof.id">{{prof.name}}</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Date de Rendu</mat-label>
+          <input matInput type="date" id="daterendu" [(ngModel)]="daterendu" name="daterendu" required>
+      </mat-form-field><div *ngIf="isFormSubmitted && assignmentForm.invalid" class="error-message">
+        Veuillez remplir tous les champs requis.
+        
+      </div>
+    
+      <button mat-raised-button color="primary" type="submit">Ajout devoir</button>
+    </form>
+  </mat-card-content>
 </mat-card>

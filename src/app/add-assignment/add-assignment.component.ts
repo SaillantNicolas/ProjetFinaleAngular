@@ -1,9 +1,9 @@
-
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Assignment } from '../models/assignment.model';
-import { ApiService } from '../services/api.service';
 import { Profs } from '../models/profs.model';
+import { ApiService } from '../services/api.service';
 import { ProfService } from '../services/prof.service';
 
 @Component({
@@ -29,6 +29,8 @@ export class AddAssignmentComponent {
     prof: 0
   };
 
+  isFormSubmitted = false;
+
   ngOnInit(): void {
     this.profService.getProfs().subscribe(data => {
       this.profs = data;
@@ -47,7 +49,13 @@ export class AddAssignmentComponent {
     });
   }
 
-  addAssignment() {
+  addAssignment(assignmentForm: NgForm) {
+    this.isFormSubmitted = true;
+
+  if (assignmentForm.invalid) {
+    // Ne pas soumettre le formulaire si des champs sont invalides
+    return;
+  }
     this.newAssignment.id = this.lastId + 1;
     this.newAssignment.nom = this.nom;
     this.newAssignment.matiere = this.matiere;

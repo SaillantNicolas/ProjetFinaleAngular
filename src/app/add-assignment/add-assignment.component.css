@@ -37,3 +37,9 @@ button.mat-raised-button {
 button.mat-raised-button:hover {
     background-color: #45a049;
 }
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 18px;
+}

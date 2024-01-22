@@ -18,12 +18,12 @@
 
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="isSidebarOpened" mode="side">
-        <mat-list>
-            <mat-list-item><a routerLink="/home"> Liste de devoirs</a></mat-list-item>
-            <mat-list-item><a routerLink="/profs"> Liste des professeurs</a></mat-list-item>
-            <mat-list-item><a routerLink="/add"> Ajout d'un devoir</a></mat-list-item>
-            <mat-list-item><a routerLink="/home"> Génération de données de test</a></mat-list-item>
-        </mat-list>
+        <mat-nav-list>
+            <button mat-raised-button class="medium-button" color="primary" (click)="closeSidebar()" routerLink="/home">Liste de devoirs</button>
+            <button mat-raised-button class="medium-button" color="primary" (click)="closeSidebar()" routerLink="/profs">Liste des professeurs</button>
+            <button mat-raised-button class="medium-button" color="primary" (click)="closeSidebar()" routerLink="/add">Ajout d'un devoir</button>
+            <button mat-raised-button class="medium-button" color="primary" (click)="closeSidebar()" routerLink="/home">Génération de données de test</button>
+        </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>

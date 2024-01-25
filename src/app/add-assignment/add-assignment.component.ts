@@ -13,6 +13,7 @@ import { ProfService } from '../services/prof.service';
 })
 export class AddAssignmentComponent {
   profs : Profs[] = [];
+  defaultprof = 0;
   lastId: number = 0;
   nom = '';
   matiere = '';
@@ -34,6 +35,10 @@ export class AddAssignmentComponent {
   ngOnInit(): void {
     this.profService.getProfs().subscribe(data => {
       this.profs = data;
+      if(this.profs.length > 0){
+        this.defaultprof = this.profs[0].id;
+        this.prof = this.defaultprof;
+      }
       console.log('Professeurs récupérés', data);
     }, error => {
       console.error('Erreur lors de la récupération des professeurs', error);

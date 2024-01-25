@@ -18,10 +18,22 @@ export class AuthService {
     return this.http.get<Login[]>(`${this.apiUrl}?user=${user}&password=${password}`);
   }
 
+  // Méthode pour vérifier le statut de connexion
+  isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user != null;
+  }
+
   // Méthode pour vérifier le statut d'administrateur
   isAdmin(): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
-    return user != null && user.admin;
+    if(this.isLoggedIn()){
+      const user = JSON.parse(localStorage.getItem('user') || 'null');
+      return user != null && user.admin;   
+    }
+    else{
+      return false;
+    }
+
   }
 
   // Méthode pour déconnecter l'utilisateur

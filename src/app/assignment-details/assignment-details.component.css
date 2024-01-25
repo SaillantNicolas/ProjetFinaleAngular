@@ -56,9 +56,19 @@ button.edit-btn {
     color: black;
 }
 
+button.edit-btn[disabled]{
+    background-color: #ccc;
+    color: #999;
+}
+
 button.delete-btn {
     background-color: #e38d87;
     color: black;
+}
+
+button.delete-btn[disabled]{
+    background-color: #ccc;
+    color: #999;
 }
 
 button.back-btn {

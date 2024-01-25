@@ -5,6 +5,7 @@ import { Profs } from '../models/profs.model';
 import { ApiService } from '../services/api.service';
 import { ProfService } from '../services/prof.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-assignments-list',
@@ -13,6 +14,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 })
 export class AssignmentsListComponent implements OnInit {
   assignments : Assignment[] = [];
+  isAdmin = false;
   profname = '';
   profsInfo: {[key: number]: Profs} = {};
   paginatedAssignments: Assignment[] = [];
@@ -20,7 +22,7 @@ export class AssignmentsListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  constructor(private apiService: ApiService, private router: Router, private profService: ProfService) { }
+  constructor(private apiService: ApiService, private router: Router, private profService: ProfService, private authService:AuthService) { }
 
   ngOnInit() {
     this.apiService.getAssignments().subscribe(data => {
@@ -32,6 +34,14 @@ export class AssignmentsListComponent implements OnInit {
     }, error => {
       console.error('Erreur lors de la récupération des assignments', error);
     });
+    if(this.authService.isAdmin()){
+      this.isAdmin = true;
+      console.log("Droits Admin !")
+    }
+    else{
+      this.isAdmin = false;
+      console.log("Droits User !")
+    }
   }
 
   loadProfForAssignments() {

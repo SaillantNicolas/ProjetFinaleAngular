@@ -25,6 +25,15 @@ export class NavbarComponent {
     this.isSidebarOpened = !this.isSidebarOpened;
   }
 
+  handleAdminClick(route: string) {
+    if (!this.authService.isAdmin()) {
+      alert("Accès refusé : Vous devez être administrateur pour accéder à cette fonctionnalité.");
+      return;
+    }
+    this.router.navigate([route]);
+    this.closeSidebar();
+  }
+
   closeSidebar() {
     this.isSidebarOpened = false;
   }

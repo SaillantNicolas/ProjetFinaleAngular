@@ -3,6 +3,7 @@
   <div class="content">
     <h2>{{ assignment.nom }}</h2>
     <p>Matière : {{ assignment.matiere }}</p>
+    <p>Date : {{ assignment.daterendu | date : "longDate" }}</p>
     <p>Note : {{ assignment.note }}</p>
     <p>Professeur : <strong>{{ getProfName(assignment.prof) }}</strong></p>
   </div>

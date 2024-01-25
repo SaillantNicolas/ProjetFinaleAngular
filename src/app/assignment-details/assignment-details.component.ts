@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment } from '../models/assignment.model';
 import { Profs } from '../models/profs.model';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 import { ProfService } from '../services/prof.service';
 
 @Component({
@@ -56,7 +57,7 @@ export class AssignmentDetailsComponent implements OnInit {
   }
 
   Back() {
-    window.history.back();
+    this.router.navigate(['/home']);
   }
 
   AssignmentDelete(id: string) {
@@ -66,7 +67,6 @@ export class AssignmentDetailsComponent implements OnInit {
     }, error => {
       console.error('Erreur lors de la suppression de l\'assignment', error);
     });
-    this.apiService.getAssignments();
     window.history.back();
   }
 }

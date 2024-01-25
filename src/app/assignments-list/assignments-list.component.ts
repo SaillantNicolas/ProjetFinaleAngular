@@ -28,8 +28,11 @@ export class AssignmentsListComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router, private profService: ProfService, private authService:AuthService) { }
 
   ngOnInit() {
+  
     this.apiService.getAssignments().subscribe(data => {
+
       this.assignments = data;
+      
       this.filteredAssignments = this.assignments;
       this.totalAssignments = this.assignments.length;
       this.initializePagination();
@@ -46,6 +49,7 @@ export class AssignmentsListComponent implements OnInit {
       this.isAdmin = false;
       console.log("Droits User !")
     }
+    
   }
 
   loadProfForAssignments() {
@@ -88,6 +92,7 @@ export class AssignmentsListComponent implements OnInit {
     }
     this.initializePagination();
   }
+
 
 
 }

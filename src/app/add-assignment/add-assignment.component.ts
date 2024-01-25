@@ -1,3 +1,4 @@
+import { GenerateAssignmentsComponent } from './../generate-assignments/generate-assignments.component';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -66,6 +67,7 @@ export class AddAssignmentComponent {
     this.newAssignment.matiere = this.matiere;
     this.newAssignment.prof = Number(this.prof);
     console.log('Nouvel assignment', this.newAssignment)
+    this.apiService.getAssignments();
     this.router.navigate(['/home']);
     this.apiService.addAssignment(this.newAssignment).subscribe(
       data => {
@@ -77,4 +79,8 @@ export class AddAssignmentComponent {
       }
     );
   }
+  
+  
+  
+
 }

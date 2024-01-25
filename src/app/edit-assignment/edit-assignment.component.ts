@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment } from '../models/assignment.model';
-import { ApiService } from '../services/api.service';
 import { Profs } from '../models/profs.model';
+import { ApiService } from '../services/api.service';
 import { ProfService } from '../services/prof.service';
 
 @Component({
@@ -54,6 +54,7 @@ export class EditAssignmentComponent {
     , error => {
       console.error('Erreur lors de la modification de l\'assignment', error);
     });
+
     this.router.navigate(['/assignment', this.newAssignment.id]);
   }
 }

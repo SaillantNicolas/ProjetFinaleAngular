@@ -61,12 +61,18 @@ export class AssignmentDetailsComponent implements OnInit {
   }
 
   AssignmentDelete(id: string) {
+
     console.log(id);
+   
+
     this.apiService.deleteAssignment(id).subscribe(data => {
+      this.apiService.getAssignments();
+    this.router.navigate(['/home']);
       console.log('Assignment supprimé', data);
     }, error => {
       console.error('Erreur lors de la suppression de l\'assignment', error);
     });
-    window.history.back();
+    
+    
   }
 }

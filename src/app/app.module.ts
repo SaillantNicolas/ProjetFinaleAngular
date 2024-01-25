@@ -1,9 +1,14 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,15 +18,12 @@ import { AddAssignmentComponent } from './add-assignment/add-assignment.componen
 import { AppComponent } from './app.component';
 import { AssignmentDetailsComponent } from './assignment-details/assignment-details.component';
 import { AssignmentsListComponent } from './assignments-list/assignments-list.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from "@angular/material/input";
-import { MatButtonModule } from "@angular/material/button";
 import { EditAssignmentComponent } from './edit-assignment/edit-assignment.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { ProfListComponent } from './prof-list/prof-list.component';
+import { authGuard } from './services/auth.guard';
+import { GenerateAssignmentsComponent } from './generate-assignments/generate-assignments.component';
 
 
 const routes: Route[] = [
@@ -35,7 +37,7 @@ const routes: Route[] = [
   },
   {
     path: 'assignments',
-    component: AssignmentsListComponent,
+    component: AssignmentsListComponent, 
   },
   {
     path: 'assignment/:id',
@@ -44,10 +46,11 @@ const routes: Route[] = [
   {
     path: 'add',
     component: AddAssignmentComponent,
+    canActivate :[authGuard]
   },
   {
     path: 'edit/:id',
-    component: EditAssignmentComponent,
+    component: EditAssignmentComponent, 
   },
   {
     path: 'login',
@@ -56,6 +59,11 @@ const routes: Route[] = [
   {
     path: 'profs',
     component: ProfListComponent,
+  },
+  {
+    path: 'generate',
+    component: GenerateAssignmentsComponent,
+    canActivate :[authGuard]
   }
 ];
 
@@ -69,6 +77,7 @@ const routes: Route[] = [
     LoginFormComponent,
     EditAssignmentComponent,
     ProfListComponent,
+    GenerateAssignmentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +95,8 @@ const routes: Route[] = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

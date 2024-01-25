@@ -19,6 +19,8 @@ export class AssignmentsListComponent implements OnInit {
   profsInfo: {[key: number]: Profs} = {};
   paginatedAssignments: Assignment[] = [];
   totalAssignments = 0;
+  searchTerm: string = '';
+  filteredAssignments: Assignment[] = [];
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
@@ -27,6 +29,7 @@ export class AssignmentsListComponent implements OnInit {
   ngOnInit() {
     this.apiService.getAssignments().subscribe(data => {
       this.assignments = data;
+      this.filteredAssignments = this.assignments;
       this.totalAssignments = this.assignments.length;
       this.initializePagination();
       this.loadProfForAssignments();
@@ -55,7 +58,7 @@ export class AssignmentsListComponent implements OnInit {
   }
 
   initializePagination() {
-    this.paginatedAssignments = this.assignments.slice(0, 5);
+    this.paginatedAssignments = this.filteredAssignments.slice(0, 5);
   }
 
   goToAssignmentDetail(id: number) {
@@ -70,6 +73,18 @@ export class AssignmentsListComponent implements OnInit {
     console.log(event);
     const startIndex = event.pageIndex * event.pageSize;
     const endIndex = startIndex + event.pageSize;
-    this.paginatedAssignments = this.assignments.slice(startIndex, endIndex);
+    this.paginatedAssignments = this.filteredAssignments.slice(startIndex, endIndex);
+
+  }
+
+  searchAssignments() {
+    if (!this.searchTerm) {
+      this.filteredAssignments = this.assignments;
+    } else {
+      this.filteredAssignments = this.assignments.filter(assignment =>
+        assignment.nom.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    this.initializePagination();
   }
 }

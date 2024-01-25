@@ -1,3 +1,6 @@
+<div class="search-container">
+  <input [(ngModel)]="searchTerm" type="text" placeholder="Rechercher un assignment..." (input)="searchAssignments()" class="search-input">
+</div>
 <div class="assignments-container">
   <div
     *ngFor="let assignment of paginatedAssignments"
@@ -29,7 +32,7 @@
   </div>
   <mat-paginator 
   [length]="totalAssignments"
-  [pageSize]=5
+  [pageSize]=20
   [pageSizeOptions]="[5, 10, 20]"
   (page)="pageEvent($event)">
 </mat-paginator>

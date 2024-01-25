@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Profs } from '../models/profs.model';
 import { Assignment } from '../models/assignment.model';
-import { ProfService } from '../services/prof.service';
+import { Profs } from '../models/profs.model';
 import { ApiService } from '../services/api.service';
+import { ProfService } from '../services/prof.service';
 
 @Component({
   selector: 'app-assignment-details',
@@ -53,7 +53,8 @@ export class AssignmentDetailsComponent implements OnInit {
   }
 
   Back() {
-    window.history.back();
+    //window.history.back();
+    this.router.navigate(['/home']);
   }
 
   AssignmentDelete(id: string) {
@@ -63,6 +64,7 @@ export class AssignmentDetailsComponent implements OnInit {
     }, error => {
       console.error('Erreur lors de la suppression de l\'assignment', error);
     });
+    this.apiService.getAssignments();
     window.history.back();
   }
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Assignment } from '../models/assignment.model';
 import { Profs } from '../models/profs.model';
 import { ApiService } from '../services/api.service';
 import { ProfService } from '../services/prof.service';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+//import { TestDataGenerationService } from '../services/test-data-generation.service';
 
 @Component({
   selector: 'app-assignments-list',
@@ -17,6 +18,7 @@ export class AssignmentsListComponent implements OnInit {
   profsInfo: {[key: number]: Profs} = {};
   paginatedAssignments: Assignment[] = [];
   totalAssignments = 0;
+
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
@@ -62,4 +64,6 @@ export class AssignmentsListComponent implements OnInit {
     const endIndex = startIndex + event.pageSize;
     this.paginatedAssignments = this.assignments.slice(startIndex, endIndex);
   }
+
+
 }

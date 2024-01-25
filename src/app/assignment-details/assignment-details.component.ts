@@ -57,7 +57,7 @@ export class AssignmentDetailsComponent implements OnInit {
   }
 
   Back() {
-    window.history.back();
+    this.router.navigate(['/home']);
   }
 
   AssignmentDelete(id: string) {

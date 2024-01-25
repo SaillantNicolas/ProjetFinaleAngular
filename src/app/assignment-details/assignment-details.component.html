@@ -7,8 +7,8 @@
     <p>Professeur : <strong>{{ getProfName(assignment.prof) }}</strong></p>
   </div>
   <div class="buttons">
-    <button mat-raised-button class="mat-raised-button edit-btn" (click)="Edit()">Edit</button>
-    <button mat-raised-button class="mat-raised-button delete-btn" (click)="AssignmentDelete(assignment._id)">Delete</button>
+    <button [disabled]="!isAdmin" [ngClass]="{isAdmin}" mat-raised-button class="mat-raised-button edit-btn" (click)="Edit()">Edit</button>
+    <button [disabled]="!isAdmin" mat-raised-button class="mat-raised-button delete-btn" (click)="AssignmentDelete(assignment._id)">Delete</button>
     <button mat-raised-button class="mat-raised-button back-btn" (click)="Back()">Retour</button>
   </div>
   <div class="image-container">

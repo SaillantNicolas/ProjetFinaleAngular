@@ -14,8 +14,9 @@ export class AssignmentDetailsComponent implements OnInit {
   profsInfo: {[key: number]: Profs} = {};
   profsImage: {[key: number]: string} = {};
   assignment: Assignment | undefined;
+  isAdmin = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService, private profService: ProfService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService, private profService: ProfService, private authService:AuthService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -28,6 +29,8 @@ export class AssignmentDetailsComponent implements OnInit {
         console.error('Erreur lors de la récupération de l\'assignment', error);
       });
     }
+    this.isAdmin = this.authService.isAdmin();
+    console.log(this.isAdmin);
   }
 
   loadProfForAssignment(id: number) {
@@ -53,8 +56,7 @@ export class AssignmentDetailsComponent implements OnInit {
   }
 
   Back() {
-    //window.history.back();
-    this.router.navigate(['/home']);
+    window.history.back();
   }
 
   AssignmentDelete(id: string) {

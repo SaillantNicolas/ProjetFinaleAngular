@@ -1,3 +1,6 @@
+<div class="search-container">
+  <input [(ngModel)]="searchTerm" type="text" placeholder="Rechercher un assignment..." (input)="searchAssignments()" class="search-input">
+</div>
 <div class="assignments-container">
   
   <div
@@ -13,7 +16,7 @@
             <strong>Date:</strong>
             {{ assignment.daterendu | date : "longDate" }}
           </p>
-          <p><strong>Prof:</strong> {{ getProfName(assignment.prof) }}</p>
+          <p><strong>Professeur:</strong> {{ getProfName(assignment.prof) }}</p>
           <p><strong>Matière:</strong> {{ assignment.matiere }}</p>
         </div>
       </div>
@@ -30,7 +33,7 @@
   </div>
   <mat-paginator
   [length]="totalAssignments"
-  [pageSize]=5
+  [pageSize]=20
   [pageSizeOptions]="[5, 10, 20]"
   (page)="pageEvent($event)">
 </mat-paginator>

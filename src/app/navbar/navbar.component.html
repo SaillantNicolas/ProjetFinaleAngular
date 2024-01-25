@@ -21,8 +21,8 @@
         <mat-nav-list>
             <button mat-raised-button class="medium-button" color="primary" (click)="closeSidebar()" routerLink="/home">Liste de devoirs</button>
             <button mat-raised-button class="medium-button" color="primary" (click)="closeSidebar()" routerLink="/profs">Liste des professeurs</button>
-            <button mat-raised-button class="medium-button" color="primary" (click)="closeSidebar()" routerLink="/add">Ajout d'un devoir</button>
-            <button mat-raised-button class="medium-button" color="primary" (click)="showDataGenerationFieldToggle()" routerLink="/home">Génération de données de test</button>
+            <button mat-raised-button class="medium-button" color="primary" (click)="handleAdminClick('/add')">Ajout d'un devoir</button>
+            <button mat-raised-button class="medium-button" color="primary" (click)="handleAdminClick('/home')">Génération de données de test</button>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

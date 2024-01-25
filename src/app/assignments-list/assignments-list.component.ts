@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Assignment } from '../models/assignment.model';
 import { Profs } from '../models/profs.model';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 import { ProfService } from '../services/prof.service';
-//import { TestDataGenerationService } from '../services/test-data-generation.service';
 
 @Component({
   selector: 'app-assignments-list',
@@ -14,19 +14,23 @@ import { ProfService } from '../services/prof.service';
 })
 export class AssignmentsListComponent implements OnInit {
   assignments : Assignment[] = [];
+  isAdmin = false;
   profname = '';
   profsInfo: {[key: number]: Profs} = {};
   paginatedAssignments: Assignment[] = [];
   totalAssignments = 0;
+  searchTerm: string = '';
+  filteredAssignments: Assignment[] = [];
 
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  constructor(private apiService: ApiService, private router: Router, private profService: ProfService) { }
+  constructor(private apiService: ApiService, private router: Router, private profService: ProfService, private authService:AuthService) { }
 
   ngOnInit() {
     this.apiService.getAssignments().subscribe(data => {
       this.assignments = data;
+      this.filteredAssignments = this.assignments;
       this.totalAssignments = this.assignments.length;
       this.initializePagination();
       this.loadProfForAssignments();
@@ -34,6 +38,14 @@ export class AssignmentsListComponent implements OnInit {
     }, error => {
       console.error('Erreur lors de la récupération des assignments', error);
     });
+    if(this.authService.isAdmin()){
+      this.isAdmin = true;
+      console.log("Droits Admin !")
+    }
+    else{
+      this.isAdmin = false;
+      console.log("Droits User !")
+    }
   }
 
   loadProfForAssignments() {
@@ -47,7 +59,7 @@ export class AssignmentsListComponent implements OnInit {
   }
 
   initializePagination() {
-    this.paginatedAssignments = this.assignments.slice(0, 5);
+    this.paginatedAssignments = this.filteredAssignments.slice(0, 5);
   }
 
   goToAssignmentDetail(id: number) {
@@ -62,7 +74,19 @@ export class AssignmentsListComponent implements OnInit {
     console.log(event);
     const startIndex = event.pageIndex * event.pageSize;
     const endIndex = startIndex + event.pageSize;
-    this.paginatedAssignments = this.assignments.slice(startIndex, endIndex);
+    this.paginatedAssignments = this.filteredAssignments.slice(startIndex, endIndex);
+
+  }
+
+  searchAssignments() {
+    if (!this.searchTerm) {
+      this.filteredAssignments = this.assignments;
+    } else {
+      this.filteredAssignments = this.assignments.filter(assignment =>
+        assignment.nom.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    this.initializePagination();
   }
 
 

@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent {
   isSidebarOpened = false;
+  showDataGenerationField = false;
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -36,5 +37,9 @@ export class NavbarComponent {
 
   closeSidebar() {
     this.isSidebarOpened = false;
+  }
+
+  showDataGenerationFieldToggle() {
+    this.showDataGenerationField = !this.showDataGenerationField;
   }
 }

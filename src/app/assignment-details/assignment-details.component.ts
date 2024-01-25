@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Profs } from '../models/profs.model';
 import { Assignment } from '../models/assignment.model';
-import { ProfService } from '../services/prof.service';
+import { Profs } from '../models/profs.model';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
+import { ProfService } from '../services/prof.service';
 
 @Component({
   selector: 'app-assignment-details',

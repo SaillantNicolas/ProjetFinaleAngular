@@ -21,6 +21,9 @@ export class AssignmentsListComponent implements OnInit {
   totalAssignments = 0;
   searchTerm: string = '';
   filteredAssignments: Assignment[] = [];
+  statusFilter: string = 'all'; // 'all', 'rendu', 'non-rendu'
+  matiereFilter: string = 'all'; // 'all', 'Maths', 'Angular', 'SGBD'
+
 
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
@@ -91,6 +94,23 @@ export class AssignmentsListComponent implements OnInit {
       );
     }
     this.initializePagination();
+  }
+
+  applyFilters() {
+    this.filteredAssignments = this.assignments.filter(assignment => {
+      // Appliquer le filtre par statut
+      const statusFilterCondition =
+        this.statusFilter === 'all' || (this.statusFilter === 'rendu' && assignment.rendu) || (this.statusFilter === 'non-rendu' && !assignment.rendu);
+  
+      // Appliquer le filtre par matière
+      const matiereFilterCondition = this.matiereFilter === 'all' || assignment.matiere === this.matiereFilter;
+  
+      // Vérifier si l'assignment correspond aux deux filtres
+      return statusFilterCondition && matiereFilterCondition;
+    });
+  
+    this.initializePagination();
+    this.paginator?.firstPage(); // Réinitialiser la pagination à la première page
   }
 
 

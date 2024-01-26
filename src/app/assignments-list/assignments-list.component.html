@@ -1,8 +1,29 @@
+<div class="filter-container">
+  <div>
+    <label for="matiereFilter">Matière :</label>
+    <select id="matiereFilter" [(ngModel)]="matiereFilter" (change)="applyFilters()">
+      <option value="all">Toutes</option>
+      <option value="Maths">Maths</option>
+      <option value="Angular">Angular</option>
+      <option value="SGBD">SGBD</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="statusFilter">Statut :</label>
+    <select id="statusFilter" [(ngModel)]="statusFilter" (change)="applyFilters()">
+      <option value="all">Tous</option>
+      <option value="rendu">Rendu</option>
+      <option value="non-rendu">Non Rendu</option>
+    </select>
+  </div>
+</div>
+
 <div class="search-container">
   <input [(ngModel)]="searchTerm" type="text" placeholder="Rechercher un assignment..." (input)="searchAssignments()" class="search-input">
 </div>
-<div class="assignments-container">
-  
+
+
   <div
     *ngFor="let assignment of paginatedAssignments"
     (click)="goToAssignmentDetail(assignment.id)"
@@ -20,11 +41,13 @@
           <p><strong>Matière:</strong> {{ assignment.matiere }}</p>
         </div>
       </div>
-      <div
-        class="assignment-status"
-        [ngClass]="{ done: assignment.rendu, 'not-done': !assignment.rendu }"
-      >
-        <p *ngIf="!assignment.rendu; else showGrade">Non Rendu</p>
+      <div class="assignment-status" [ngClass]="{ done: assignment.rendu, 'not-done': !assignment.rendu }">
+        <ng-container *ngIf="!assignment.rendu; else showGrade">
+          <span *ngIf="assignment.matiere === 'Maths'" class="material-icons icon">functions</span>
+          <span *ngIf="assignment.matiere === 'Angular'" class="material-icons icon">extension</span>
+          <span *ngIf="assignment.matiere === 'SGBD'" class="material-icons icon">storage</span>
+          Non Rendu
+        </ng-container>
         <ng-template #showGrade>
           <p>Note: {{ assignment.note }}</p>
         </ng-template>
@@ -32,9 +55,8 @@
     </div>
   </div>
   <mat-paginator
-  [length]="totalAssignments"
-  [pageSize]=20
-  [pageSizeOptions]="[5, 10, 20]"
-  (page)="pageEvent($event)">
-</mat-paginator>
-</div>
+    [length]="totalAssignments"
+    [pageSize]=20
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="pageEvent($event)">
+  </mat-paginator>

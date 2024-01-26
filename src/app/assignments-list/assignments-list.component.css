@@ -1,7 +1,48 @@
+.icon {
+  margin-right: 8px; /* Ajustez la marge à votre convenance */
+}
+
+.assignment-status {
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+  display: flex; /* Utilisation de flexbox pour aligner les icônes et le texte */
+  align-items: center;
+}
+
+.assignment-status.not-done {
+  background-color: #ffe0e0;
+}
+
+.assignment-status.done {
+  background-color: #e0ffe0;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Espacement en bas de la barre de filtre */
+}
+
+.filter-container label,
+.filter-container select {
+  width: 80%; /* Ajustez la largeur des champs de filtre selon vos besoins */
+}
+
+.filter-container label {
+  text-align: left; /* Alignez le texte à gauche */
+}
+
+.filter-container select {
+  text-align: right; /* Alignez le texte à droite */
+}
+
 .search-container {
-  margin: 20px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin: 5px 0;
 }
 
 .search-input {
@@ -22,6 +63,7 @@
   border-color: #aaa;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
+
 
 .assignments-container {
     display: flex;

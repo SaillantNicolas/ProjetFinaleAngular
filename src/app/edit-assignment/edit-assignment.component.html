@@ -1,6 +1,6 @@
 <mat-card class="edit-assignment-container">
     <mat-card-header>
-      <mat-card-title>Modifié un devoir</mat-card-title>
+      <mat-card-title>Modifier un devoir</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form (ngSubmit)="updateAssignment()">
@@ -26,7 +26,7 @@
             <mat-label>Note</mat-label>
             <input matInput type="number" id="note" [(ngModel)]="newAssignment.note" name="note" required>
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Modifié devoir</button>
+        <button mat-raised-button color="primary" type="submit">Modifier le devoir</button>
       </form>
     </mat-card-content>
 </mat-card>

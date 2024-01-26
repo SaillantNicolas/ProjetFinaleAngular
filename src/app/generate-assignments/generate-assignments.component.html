@@ -1,7 +1,10 @@
-<br>
-<h1>Formulaire de générations de devoirs</h1>
-<div class="assignment-generator">
-    <input type="number" [(ngModel)]="numberOfAssignments" placeholder="Entrer le nombre de devoirs" name="numAssignments" min="1">
-    <button class="generate-btn" (click)="generateAssignments()">Générer les assignments</button>
+<div class="container">
+    <div class="assignment-generator">
+        <h1>Formulaire de génération de devoirs</h1>
+        <div class="input-container">
+            <label for="numAssignments">Nombre de devoirs que vous voulez générer :</label>
+            <input type="number" [(ngModel)]="numberOfAssignments" id="numAssignments" name="numAssignments" min="1">
+        </div>
+        <button mat-raised-button class="generate-btn" (click)="generateAssignments()">Générer les devoirs</button>
+    </div>
 </div>
-<br>

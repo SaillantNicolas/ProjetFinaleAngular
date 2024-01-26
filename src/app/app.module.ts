@@ -51,6 +51,7 @@ const routes: Route[] = [
   {
     path: 'edit/:id',
     component: EditAssignmentComponent, 
+    canActivate :[authGuard]
   },
   {
     path: 'login',

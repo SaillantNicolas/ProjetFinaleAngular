@@ -31,7 +31,7 @@ Les comptes disponible sur le projet sont
 
 ## Version en Ligne
 
-Visitez [[projet sur Render.com]](https://projet-angular-saillant-mansouri.onrender.com/home) pour voir la version en ligne de l'application hébergée sur Render.com.
+Visitez [projet sur Render.com](https://projet-angular-saillant-mansouri.onrender.com/home) pour voir la version en ligne de l'application hébergée sur Render.com.
 liens disponible pour l'api
   - [[assignments]](https://projet-angular-api-saillant-mansouri.onrender.com/api/assignments)
   - [[profs]](https://projet-angular-api-saillant-mansouri.onrender.com/api/profs)

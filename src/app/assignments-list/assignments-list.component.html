@@ -1,5 +1,5 @@
-<div class="filter-container">
-  <div>
+<div class="filter-container-wrapper">
+  <div class="filter-container">
     <label for="matiereFilter">Matière :</label>
     <select id="matiereFilter" [(ngModel)]="matiereFilter" (change)="applyFilters()">
       <option value="all">Toutes</option>
@@ -9,7 +9,11 @@
     </select>
   </div>
 
-  <div>
+  <div class="search-container">
+    <input [(ngModel)]="searchTerm" type="text" placeholder="Rechercher un assignment..." (input)="searchAssignments()" class="search-input">
+  </div>
+
+  <div class="filter-container status-filter-container">
     <label for="statusFilter">Statut :</label>
     <select id="statusFilter" [(ngModel)]="statusFilter" (change)="applyFilters()">
       <option value="all">Tous</option>
@@ -19,9 +23,6 @@
   </div>
 </div>
 
-<div class="search-container">
-  <input [(ngModel)]="searchTerm" type="text" placeholder="Rechercher un assignment..." (input)="searchAssignments()" class="search-input">
-</div>
 
 <div class="assignments-container">
   <div

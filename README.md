@@ -1,27 +1,45 @@
-# ProjetFinaleAngular
+# Projet Angular 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+## Installation et Démarrage
 
-## Development server
+Pour installer et lancer le projet localement, suivez ces étapes :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Cloner le dépôt :
+```
+git clone https://github.com/SaillantNicolas/ProjetFinaleAngular.git
+```
 
-## Code scaffolding
+2. Installer les dépendances :
+dans le répertoire du projet
+```
+npm install 
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. Construire l'application :
+```
+npm run build
+```
 
-## Build
+Démarrer l'application :
+```
+npm run start
+```
+Après ces étapes, votre application devrait être en cours d'exécution sur votre machine locale ici http://localhost:8081/home.
+Les comptes disponible sur le projet sont
+  - Etudiants : login : user | mot de passe : user
+  - Professeur : login : admin | mot de passe : admin 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Version en Ligne
 
-## Running unit tests
+Visitez [[projet sur Render.com]](https://projet-angular-saillant-mansouri.onrender.com/home) pour voir la version en ligne de l'application hébergée sur Render.com.
+liens disponible pour l'api
+  - [[assignments]](https://projet-angular-api-saillant-mansouri.onrender.com/api/assignments)
+  - [[profs]](https://projet-angular-api-saillant-mansouri.onrender.com/api/profs)
+  - [[accounts] ](https://projet-angular-api-saillant-mansouri.onrender.com/api/accounts)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Membres du projet
 
-## Running end-to-end tests
+- Neila MANSOURI
+- Nicolas SAILLANT
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

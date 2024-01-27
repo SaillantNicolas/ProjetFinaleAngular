@@ -18,26 +18,6 @@
   background-color: #e0ffe0;
 }
 
-.filter-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px; /* Espacement en bas de la barre de filtre */
-}
-
-.filter-container label,
-.filter-container select {
-  width: 80%; /* Ajustez la largeur des champs de filtre selon vos besoins */
-}
-
-.filter-container label {
-  text-align: left; /* Alignez le texte à gauche */
-}
-
-.filter-container select {
-  text-align: right; /* Alignez le texte à droite */
-}
-
 .search-container {
   display: flex;
   justify-content: center;
@@ -126,3 +106,76 @@
     font-weight: bold;
   }
   
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-container > div {
+  display: flex;
+  align-items: center;
+}
+
+.filter-container select {
+  padding: 10px;
+  border: 1px solid #ddd; 
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 16px;
+  color: #333;
+  background-color: white;
+  cursor: pointer;
+}
+
+.filter-container select:focus {
+  outline: none;
+  border-color: #aaa;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.filter-container label {
+  font-size: 16px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 16px;
+  color: #333;
+}
+
+.search-input:focus {
+  border-color: #aaa;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-container > div {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .search-container {
+    margin-bottom: 10px;
+  }
+}

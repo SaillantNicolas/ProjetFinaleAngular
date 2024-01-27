@@ -9,7 +9,7 @@ import { Login } from '../models/login.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8010/api/accounts';
+  private apiUrl = 'https://projet-angular-api-saillant-mansouri.onrender.com/api/accounts';
   loggedIn = false;
   constructor(private http: HttpClient) {}
 

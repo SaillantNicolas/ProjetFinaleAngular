@@ -9,7 +9,6 @@ import { Assignment } from './../models/assignment.model';
 })
 export class ApiService {
   baseUrl = 'http://localhost:8010/api/assignments';
-  lastId= 234;
 
   constructor(private http: HttpClient) {}
 
@@ -44,13 +43,12 @@ export class ApiService {
     "QCM 1", "QCM 2", "QCM 3", "QCM 4", "QCM 5", "QCM 6", "QCM 7", "QCM 8", "QCM 9", "QCM 10"
   ];
   matieres = ['Mathématiques', 'Histoire', 'Physique'];
-  generateRandomAssignment() {
+  generateRandomAssignment(addid : number) {
     const startDate = new Date('2023-09-01'); 
     const endDate = new Date('2024-06-30');
     const timeDifference = endDate.getTime() - startDate.getTime();
     const randomTimeDifference = Math.random() * timeDifference;
     const randomDate = new Date(startDate.getTime() + randomTimeDifference); 
-  
     const nom = this.randomName [Math.floor(Math.random()* this.randomName.length)];
   
     
@@ -67,12 +65,19 @@ export class ApiService {
       randomMatiere = 'SGBD';
     }
 
-    
+    let lastId = 0;
+    this.getAssignments().subscribe(data => {
+      data.forEach(element => {
+        if (element.id > lastId) {
+          lastId = element.id;
+        }
+      });
+    });
 
     const newAssignment: Assignment = {
       _id: '',
       rendu: false,
-      id: this.lastId + 1,
+      id: lastId + addid,
       daterendu: randomDate,
       matiere: randomMatiere,
       nom: nom,
@@ -83,8 +88,6 @@ export class ApiService {
     this.addAssignment(newAssignment).subscribe(
       data => {
         console.log('Assignment aléatoire ajouté', data);
-        this.lastId++;
-        // Vous pouvez aussi mettre à jour votre UI ici si nécessaire
       },
       error => {
         console.error('Erreur lors de l ajout de l assignment aléatoire', error);
@@ -96,7 +99,7 @@ export class ApiService {
   {
     for (let i =0;i<n;i++)
     {
-      this.generateRandomAssignment();
+      this.generateRandomAssignment(i);
     }
   }
 }

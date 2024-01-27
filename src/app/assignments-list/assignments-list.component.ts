@@ -70,6 +70,7 @@ export class AssignmentsListComponent implements OnInit {
   }
 
   goToAssignmentDetail(id: number) {
+    console.log('Assignment sélectionné', id)
     this.router.navigate(['/assignment', id]);
   }
 

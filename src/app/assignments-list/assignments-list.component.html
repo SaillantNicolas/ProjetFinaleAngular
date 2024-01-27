@@ -23,7 +23,7 @@
   <input [(ngModel)]="searchTerm" type="text" placeholder="Rechercher un assignment..." (input)="searchAssignments()" class="search-input">
 </div>
 
-
+<div class="assignments-container">
   <div
     *ngFor="let assignment of paginatedAssignments"
     (click)="goToAssignmentDetail(assignment.id)"

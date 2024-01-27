@@ -43,9 +43,9 @@
       </div>
       <div class="assignment-status" [ngClass]="{ done: assignment.rendu, 'not-done': !assignment.rendu }">
         <ng-container *ngIf="!assignment.rendu; else showGrade">
-          <span *ngIf="assignment.matiere === 'Maths'" class="material-icons icon">functions</span>
-          <span *ngIf="assignment.matiere === 'Angular'" class="material-icons icon">extension</span>
-          <span *ngIf="assignment.matiere === 'SGBD'" class="material-icons icon">storage</span>
+          <img *ngIf="assignment.matiere === 'Maths'" src="assets/images/maths.png" alt="Maths Icon" class="icon-img" />
+          <img *ngIf="assignment.matiere === 'Angular'" src="assets/images/angular.png" alt="Angular Icon" class="icon-img" />
+          <img *ngIf="assignment.matiere === 'SGBD'" src="assets/images/sgbd.png" alt="SGBD Icon" class="icon-img" />
           Non Rendu
         </ng-container>
         <ng-template #showGrade>

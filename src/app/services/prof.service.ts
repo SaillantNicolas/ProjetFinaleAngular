@@ -7,7 +7,7 @@ import { Profs } from '../models/profs.model';
   providedIn: 'root'
 })
 export class ProfService {
-  baseUrl = 'https://projet-angular-api-saillant-mansouri.onrender.com/api/profs';
+  baseUrl = 'http://localhost:8010/api/profs';
   constructor(private http: HttpClient) { }
 
   getProfs(): Observable<Profs[]> {

@@ -8,7 +8,7 @@ import { Assignment } from './../models/assignment.model';
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'https://projet-angular-api-saillant-mansouri.onrender.com/api/assignments';
+  baseUrl = 'http://localhost:8010/api/assignments';
 
   constructor(private http: HttpClient) {}
 

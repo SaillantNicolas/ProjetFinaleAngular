@@ -23,6 +23,13 @@
             <input matInput type="date" id="daterendu" [(ngModel)]="newAssignment.daterendu" name="daterendu" required>
         </mat-form-field>
         <mat-form-field appearance="fill">
+          <mat-label>Rendu</mat-label>
+          <select id="rendu" [(ngModel)]="newAssignment.rendu" name="rendu" matNativeControl required>
+            <option [value]="true">Oui</option>
+            <option [value]="false">Non</option>
+          </select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>Note</mat-label>
             <input matInput type="number" id="note" [(ngModel)]="newAssignment.note" name="note" required>
         </mat-form-field>

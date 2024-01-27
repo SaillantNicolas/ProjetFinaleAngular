@@ -4,6 +4,7 @@
     <h2>{{ assignment.nom }}</h2>
     <p>Matière : {{ assignment.matiere }}</p>
     <p>Note : {{ assignment.note }}</p>
+    <p>Date : {{ assignment.daterendu | date : "longDate" }}</p>
     <p>Professeur : <strong>{{ getProfName(assignment.prof) }}</strong></p>
   </div>
   <div class="buttons">
